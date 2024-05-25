@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
-import 'package:smartibe/dismac.dart';
 import 'package:smartibe/src/ble/ble_scanner.dart';
 import 'package:provider/provider.dart';
 
@@ -104,17 +103,17 @@ class _DeviceListState extends State<_DeviceList> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
-                        child: const Text('Scan'),
                         onPressed: !widget.scannerState.scanIsInProgress &&
                                 _isValidUuidInput()
                             ? _startScanning
                             : null,
+                        child: const Text('Scan'),
                       ),
                       ElevatedButton(
-                        child: const Text('Stop'),
                         onPressed: widget.scannerState.scanIsInProgress
                             ? widget.stopScan
                             : null,
+                        child: const Text('Stop'),
                       ),
                     ],
                   ),
@@ -147,7 +146,7 @@ class _DeviceListState extends State<_DeviceList> {
                     .map(
                       (device) => ListTile(
                         title: Text(device.name),
-                        subtitle: Text("${device.id}\nRSSI: "+ pow(10 , ((-65 -(device.rssi))/(10*3))).toString()),//${device.rssi}"),
+                        subtitle: Text("${device.id}\nRSSI: ${pow(10 , ((-65 -(device.rssi))/(10*3)))}"),//${device.rssi}"),
                         leading: const BluetoothIcon(),
                         onTap: () async {
                           widget.stopScan();

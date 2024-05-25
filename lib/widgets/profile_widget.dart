@@ -20,14 +20,14 @@ class ProfileWidget extends StatelessWidget {
               const SizedBox(
                 width: 16.0,
               ),
-              Text('title', style: TextStyle(
+              const Text('title', style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),)
             ],
           ),
-          Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16.0,),
+          const Icon(Icons.arrow_forward_ios, color: Colors.black, size: 16.0,),
         ],
       ),
     );

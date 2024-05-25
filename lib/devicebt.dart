@@ -197,9 +197,7 @@ class _DeviceListState extends State<_DeviceList> {
                       alignment: const AlignmentDirectional(0, 0),
                       child: (widget.scannerState.discoveredDevices
                                   .where((element) =>
-                                      element.name.contains(namefiltter))
-                                  .length >
-                              0)
+                                      element.name.contains(namefiltter)).isNotEmpty)
                           ? calcDistance(widget.scannerState.discoveredDevices
                                       .where((element) =>
                                           element.name.contains(namefiltter))
@@ -226,17 +224,14 @@ class _DeviceListState extends State<_DeviceList> {
                               const EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                           child: (widget.scannerState.discoveredDevices
                                       .where((element) =>
-                                          element.name.contains(namefiltter))
-                                      .length >
-                                  0)
-                              ? Text(calcDistance(widget
+                                          element.name.contains(namefiltter)).isNotEmpty)
+                              ? Text("${calcDistance(widget
                                           .scannerState.discoveredDevices
                                           .where((element) => element.name
                                               .contains(namefiltter))
                                           .first
                                           .rssi)
-                                      .toStringAsFixed(2) +
-                                  " m")
+                                      .toStringAsFixed(2)} m")
                               : const Text(""),
                         )),
                     Align(
@@ -246,9 +241,7 @@ class _DeviceListState extends State<_DeviceList> {
                               const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: (widget.scannerState.discoveredDevices
                                       .where((element) =>
-                                          element.name.contains(namefiltter))
-                                      .length >
-                                  0)
+                                          element.name.contains(namefiltter)).isNotEmpty)
                               ? calcDistance(widget
                                           .scannerState.discoveredDevices
                                           .where((element) => element.name
@@ -256,8 +249,8 @@ class _DeviceListState extends State<_DeviceList> {
                                           .first
                                           .rssi) <
                                       rangeWarning
-                                  ? Text("OK")
-                                  : Text("Warning")
+                                  ? const Text("OK")
+                                  : const Text("Warning")
                               : const Text("Not found"),
                         )),
                   ],
@@ -270,17 +263,17 @@ class _DeviceListState extends State<_DeviceList> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
-                child: const Text('Scan'),
                 onPressed:
                     !widget.scannerState.scanIsInProgress && _isValidUuidInput()
                         ? _startScanning
                         : null,
+                child: const Text('Scan'),
               ),
               ElevatedButton(
-                child: const Text('Stop'),
                 onPressed: widget.scannerState.scanIsInProgress
                     ? widget.stopScan
                     : null,
+                child: const Text('Stop'),
               ),
             ],
           ),
@@ -344,7 +337,7 @@ organ = direction* (math.pi / 180) * -1;
             angle: (direction * (math.pi / 180) * -1),
             child: Image.asset(
               'assets/compass.png',
-              color: Color.fromARGB(255, 214, 64, 64),
+              color: const Color.fromARGB(255, 214, 64, 64),
               fit: BoxFit.fill,
             ),
           ),

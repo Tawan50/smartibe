@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smartibe/devicebt.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -16,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
         widthFactor: 1,
         heightFactor: 1,
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/backglogin.png'),
               fit: BoxFit.cover,
@@ -70,20 +72,20 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 241, 208, 135),
+            color: const Color.fromARGB(255, 241, 208, 135),
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
           width: 250.0,
           height: 40.0,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 2.0),
+          child: const Padding(
+            padding: EdgeInsets.only(left: 2.0),
             child: TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Username',
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
+                  padding: EdgeInsets.only(left: 5.0),
                   child: Icon(
                     Icons.account_box_sharp,
                     color: Color.fromARGB(255, 117, 87, 47),
@@ -98,21 +100,21 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 241, 208, 135),
+            color: const Color.fromARGB(255, 241, 208, 135),
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
           width: 250.0,
           height: 40.0,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 2.0),
+          child: const Padding(
+            padding: EdgeInsets.only(left: 2.0),
             child: TextField(
               obscureText: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Password',
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
+                  padding: EdgeInsets.only(left: 5.0),
                   child: Icon(
                     Icons.lock,
                     color: Color.fromARGB(255, 117, 87, 47),
@@ -135,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           "click here",
           style: GoogleFonts.domine(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Color.fromARGB(255, 157, 57, 32),
               fontSize: 16.0,
               fontWeight: FontWeight.w700,
@@ -150,9 +152,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 65, 45, 16),
+          color: const Color.fromARGB(255, 65, 45, 16),
           borderRadius: BorderRadius.circular(20),
         ),
         child: TextButton(
@@ -164,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Text(
             '    Login    ',
             style: GoogleFonts.domine(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: Color.fromARGB(255, 255, 199, 116),
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
@@ -181,14 +183,14 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Text(
         'Forget Password',
         style: GoogleFonts.domine(
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
               color: Color.fromARGB(255, 101, 82, 27), fontSize: 16.0),
         ),
       ),
     );
   }
 
-  SizedBox mySizebox() => SizedBox(
+  SizedBox mySizebox() => const SizedBox(
         width: 8.0,
         height: 16.0,
       );
