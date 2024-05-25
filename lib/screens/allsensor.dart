@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:math' as math;
-import 'package:smartibe/src/widgets.dart';
-import 'package:smartibe/src/ui/device_detail/device_detail_screen.dart';
 import 'dart:math';
 import 'package:pedometer/pedometer.dart';
 import 'dart:async';
@@ -282,11 +280,11 @@ class _SumTState extends State<_DeviceList> {
           ),
 
           ElevatedButton(
-            child: const Text('Scan'),
             onPressed:
                 !widget.scannerState.scanIsInProgress && _isValidUuidInput()
                     ? _startScanning
                     : null,
+            child: const Text('Scan'),
           ),
           // ignore: prefer_is_empty
           (widget.scannerState.discoveredDevices.isNotEmpty)
@@ -314,11 +312,7 @@ class _SumTState extends State<_DeviceList> {
     String text = '';
     for (var element in d) {
       if (element.name.toString() != '') {
-        text = text +
-            element.name.toString() +
-            ' rssi:' +
-            element.rssi.toString() +
-            '\n';
+        text = '$text${element.name} rssi:${element.rssi}\n';
       }
     }
     return text;

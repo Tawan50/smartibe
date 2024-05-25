@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartibe/screens/LoginScreen.dart';
 import 'package:smartibe/screens/PositionxyScreen.dart';
-import 'package:smartibe/screens/RegisterScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smartibe/screens/Settings.dart';
-import 'package:smartibe/screens/UserProfile.dart';
-import 'package:smartibe/screens/step.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         widthFactor: 1,
         heightFactor: 1,
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/home.png'),
               fit: BoxFit.cover,
@@ -32,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Align(
                 alignment: Alignment.topRight,
                 child: Column(
@@ -69,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text(
           'Login',
           style: GoogleFonts.merriweather(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
                 color: Color.fromARGB(255, 40, 117, 17), fontSize: 18.0),
             fontWeight: FontWeight.w700,
           ),
@@ -89,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text(
           "Sign Up",
           style: GoogleFonts.merriweather(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Color.fromARGB(255, 40, 117, 17),
               fontSize: 18.0,
               fontWeight: FontWeight.w700,
@@ -100,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SizedBox mySizebox() => SizedBox(
+  SizedBox mySizebox() => const SizedBox(
         width: 8.0,
         height: 16.0,
       );

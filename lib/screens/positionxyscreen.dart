@@ -11,10 +11,12 @@ String formatDate(DateTime d) {
 }
 
 void main() {
-  runApp(PositionxyScreen());
+  runApp(const PositionxyScreen());
 }
 
 class PositionxyScreen extends StatefulWidget {
+  const PositionxyScreen({Key? key}) : super(key: key);
+
   @override
   State<PositionxyScreen> createState() => _PositionxyScreenState();
 }
@@ -137,7 +139,7 @@ organ = direction* (math.pi / 180) * -1;
             angle: (direction * (math.pi / 180) * -1),
             child: Image.asset(
               'assets/compass.png',
-              color: Color.fromARGB(255, 214, 64, 64),
+              color: const Color.fromARGB(255, 214, 64, 64),
               fit: BoxFit.fill,
             ),
           ),
@@ -163,13 +165,13 @@ organ = direction* (math.pi / 180) * -1;
     return Center(
       child: Column(
         children: <Widget>[
-      Text(
+      const Text(
                 'Steps taken:',
                 style: TextStyle(fontSize: 30),
               ),
               Text(
                 _steps,
-                style: TextStyle(fontSize: 60),
+                style: const TextStyle(fontSize: 60),
               ),
         ]
       ),

@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smartibe/screens/homescreen.dart';
 
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -19,24 +21,24 @@ class _SettingsPageState extends State<SettingsPage> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.green,
           ),
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
           children: [
-            Text(
+            const Text(
               "Settings",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.person,
@@ -51,11 +53,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               height: 15,
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildAccountOptionRow(context, "Change password"),
@@ -63,10 +65,10 @@ class _SettingsPageState extends State<SettingsPage> {
             buildAccountOptionRow(context, "Social"),
             buildAccountOptionRow(context, "Language"),
             buildAccountOptionRow(context, "Privacy and security"),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.volume_up_outlined,
@@ -81,30 +83,30 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               height: 15,
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             buildNotificationOptionRow("New for you", true),
             buildNotificationOptionRow("Account activity", true),
             buildNotificationOptionRow("Opportunity", false),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Center(
               child: TextButton(
         onPressed: () {
           MaterialPageRoute materialPageRoute = MaterialPageRoute(
-              builder: (BuildContext context) => HomeScreen());
+              builder: (BuildContext context) => const HomeScreen());
           Navigator.of(context).push(materialPageRoute);
         },
         child: Text(
           "Sign Out",
           style: GoogleFonts.merriweather(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Color.fromARGB(255, 40, 117, 17),
               fontSize: 18.0,
               fontWeight: FontWeight.w700,
@@ -148,7 +150,7 @@ class _SettingsPageState extends State<SettingsPage> {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: Text(title),
-                content: Column(
+                content: const Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text("Option 1"),
@@ -161,7 +163,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text("Close")),
+                      child: const Text("Close")),
                 ],
               );
             });
@@ -179,7 +181,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: Colors.grey[600],
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios,
               color: Colors.grey,
             ),

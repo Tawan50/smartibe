@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smartibe/screens/LoginScreen.dart';
-import 'package:smartibe/screens/registerscreen.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_compass/flutter_compass.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'dart:math' as math;
 
 class PosScreen extends StatefulWidget {
   const PosScreen({Key? key}) : super(key: key);
@@ -26,7 +19,7 @@ class _PositionScreenState extends State<PosScreen> {
         child: Column(
             mainAxisSize: MainAxisSize.max,
           children: [
-              Container(
+              SizedBox(
                 width: 1000,
                 height: 710,
                 child: Stack(
