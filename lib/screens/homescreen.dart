@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: TextButton(
         onPressed: () {
           MaterialPageRoute materialPageRoute = MaterialPageRoute(
-              builder: (BuildContext context) => PositionxyScreen ());
+              builder: (BuildContext context) => PositionxyScreen());
           Navigator.of(context).push(materialPageRoute);
         },
         child: Text(

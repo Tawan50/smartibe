@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartibe/src/ble/ble_device_connector.dart';
 import 'package:smartibe/src/ble/ble_device_interactor.dart';
 import 'package:functional_data/functional_data.dart';
@@ -53,7 +54,9 @@ class DeviceInteractionViewModel extends $DeviceInteractionViewModel {
   bool get deviceConnected =>
       connectionStatus == DeviceConnectionState.connected;
 
-  void connect() {
+  connect() async {
+    print("!! connect !!");
+
     deviceConnector.connect(deviceId);
   }
 

@@ -142,11 +142,13 @@ class _DeviceListState extends State<_DeviceList> {
             const SizedBox(height: 8),
             Flexible(
               child: ListView(
-                children: widget.scannerState.discoveredDevices.where((element) => element.name.contains('LifeSmart Tag'))
+                children: widget.scannerState.discoveredDevices
+                    .where((element) => element.name.contains('LifeSmart Tag'))
                     .map(
                       (device) => ListTile(
                         title: Text(device.name),
-                        subtitle: Text("${device.id}\nRSSI: ${pow(10 , ((-65 -(device.rssi))/(10*3)))}"),//${device.rssi}"),
+                        subtitle: Text(
+                            "${device.id}\nRSSI: ${pow(10, ((-65 - (device.rssi)) / (10 * 3)))}"), //${device.rssi}"),
                         leading: const BluetoothIcon(),
                         onTap: () async {
                           widget.stopScan();
