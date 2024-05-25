@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartibe/src/ble/ble_device_connector.dart';
 import 'package:smartibe/src/ble/ble_scanner.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_compass/flutter_compass.dart';
@@ -7,7 +9,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:math' as math;
 import 'dart:math';
 import 'package:pedometer/pedometer.dart';
+import 'package:smartibe/src/widgets.dart';
 import 'dart:async';
+
+import '../src/ui/device_detail/device_detail_screen.dart';
 
 class AllSensor extends StatelessWidget {
   const AllSensor({Key? key}) : super(key: key);
@@ -76,7 +81,7 @@ class _SumTState extends State<_DeviceList> {
   }
 
   //count step
-  void initPlatformState() {
+  void initPlatformState() async {
     _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
     _pedestrianStatusStream
         .listen(onPedestrianStatusChanged)
@@ -85,6 +90,12 @@ class _SumTState extends State<_DeviceList> {
     _stepCountStream.listen(onStepCount).onError(onStepCountError);
 
     // Obtain shared preferences.
+    final prefs = await SharedPreferences.getInstance();
+    final lastConnectedDeviceId = prefs.getString('last_connected_device_id');
+
+    if (lastConnectedDeviceId != null) {
+      // TODO: connect
+    }
 
     if (!mounted) return;
   }
@@ -157,8 +168,6 @@ class _SumTState extends State<_DeviceList> {
     return pow(10, ((-65 - (rssi)) / (10 * 3))).toDouble();
   }
 
-  String distance_s = '';
-  String namefiltter = 'Direct-Fi-Poom';
   double rangeWarning = 25.0;
 
   List<String> products = List<String>.generate(5, (i) => "Product List: $i");
@@ -181,6 +190,8 @@ class _SumTState extends State<_DeviceList> {
   }
 
   Widget _buildCompass() {
+    final devices = widget.scannerState.discoveredDevices;
+
     return Align(
       alignment: Alignment.topRight,
       child: Column(
@@ -286,10 +297,29 @@ class _SumTState extends State<_DeviceList> {
                     : null,
             child: const Text('Scan'),
           ),
-          // ignore: prefer_is_empty
-          (widget.scannerState.discoveredDevices.isNotEmpty)
-              ? Text(getTextName(widget.scannerState.discoveredDevices))
-              : const Text('none'),
+
+          Flexible(
+            child: ListView(
+              children: widget.scannerState.discoveredDevices
+                  .map(
+                    (device) => ListTile(
+                      title: Text(device.name),
+                      subtitle: Text("${device.id}\nRSSI:${device.rssi}"),
+                      leading: const BluetoothIcon(),
+                      onTap: () async {
+                        widget.stopScan();
+
+                        await Navigator.push<void>(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    DeviceDetailScreen(device: device)));
+                      },
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartibe/src/ble/reactive_state.dart';
 
 class BleDeviceConnector extends ReactiveState<ConnectionStateUpdate> {
@@ -24,9 +25,15 @@ class BleDeviceConnector extends ReactiveState<ConnectionStateUpdate> {
   Future<void> connect(String deviceId) async {
     _logMessage('Start connecting to $deviceId');
     _connection = _ble.connectToDevice(id: deviceId).listen(
-      (update) {
+      (update) async {
         _logMessage(
             'ConnectionState for device $deviceId : ${update.connectionState}');
+
+        if (update.connectionState == DeviceConnectionState.connected) {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('last_connected_device_id', deviceId);
+        }
+
         _deviceConnectionController.add(update);
       },
       onError: (Object e) =>

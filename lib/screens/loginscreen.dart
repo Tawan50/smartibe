@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartibe/Screens/RegisterScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smartibe/devicebt.dart';
+import 'package:smartibe/screens/allsensor.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: TextButton(
           onPressed: () {
             MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                builder: (BuildContext context) => const DeviceListScreenBT());
+                builder: (BuildContext context) => const AllSensor());
             Navigator.of(context).push(materialPageRoute);
           },
           child: Text(

@@ -63,11 +63,11 @@ void main() {
         ),
       ],
       child: MaterialApp(
-          title: titlename,
-          color: _themeColor,
-          theme: ThemeData(primarySwatch: _themeColor),
-          home: const AllSensor() //HomeScreen(),
-          ),
+        title: titlename,
+        color: _themeColor,
+        theme: ThemeData(primarySwatch: _themeColor),
+        home: HomeScreen(), // const AllSensor()
+      ),
     ),
   );
 }

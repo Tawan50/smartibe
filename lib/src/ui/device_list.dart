@@ -72,7 +72,7 @@ class _DeviceListState extends State<_DeviceList> {
     final text = _uuidController.text;
     widget.startScan(text.isEmpty ? [] : [Uuid.parse(_uuidController.text)]);
   }
-  
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
