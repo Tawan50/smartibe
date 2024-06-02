@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartibe/screens/LoginScreen.dart';
 import 'package:smartibe/screens/PositionxyScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartibe/screens/registerscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var text = '5 m';
+  //var text = '5 m';
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: TextButton(
         onPressed: () {
           MaterialPageRoute materialPageRoute = MaterialPageRoute(
-              builder: (BuildContext context) => PositionxyScreen());
+              builder: (BuildContext context) => RegisterScreen());
           Navigator.of(context).push(materialPageRoute);
         },
         child: Text(

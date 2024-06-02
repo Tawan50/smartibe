@@ -48,6 +48,7 @@ class _DeviceList extends StatefulWidget {
 class _SumTState extends State<_DeviceList> {
   // bluetooth
   late TextEditingController _uuidController;
+  late BleDeviceConnector _deviceController;
 
   // count step
   late Stream<StepCount> _stepCountStream;
@@ -94,7 +95,8 @@ class _SumTState extends State<_DeviceList> {
     final lastConnectedDeviceId = prefs.getString('last_connected_device_id');
 
     if (lastConnectedDeviceId != null) {
-      // TODO: connect
+      //connect
+      _deviceController.connect(lastConnectedDeviceId);
     }
 
     if (!mounted) return;
@@ -304,7 +306,7 @@ class _SumTState extends State<_DeviceList> {
                   .map(
                     (device) => ListTile(
                       title: Text(device.name),
-                      subtitle: Text("${device.id}\nRSSI:${device.rssi}"),
+                      subtitle: Text("${device.name}\n${device.id}\nRSSI:${device.rssi}"),
                       leading: const BluetoothIcon(),
                       onTap: () async {
                         widget.stopScan();

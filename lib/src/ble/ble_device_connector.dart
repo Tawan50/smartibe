@@ -32,6 +32,7 @@ class BleDeviceConnector extends ReactiveState<ConnectionStateUpdate> {
         if (update.connectionState == DeviceConnectionState.connected) {
           final prefs = await SharedPreferences.getInstance();
           await prefs.setString('last_connected_device_id', deviceId);
+          print('connected');
         }
 
         _deviceConnectionController.add(update);

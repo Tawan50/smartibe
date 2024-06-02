@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:smartibe/bluetoothmain.dart';
+import 'package:smartibe/btbg.dart';
 import 'package:smartibe/dismac.dart';
+import 'package:smartibe/posscreen.dart';
 import 'package:smartibe/screens/allsensor.dart';
 import 'package:smartibe/screens/homescreen.dart';
 
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:smartibe/screens/navpage.dart';
+import 'package:smartibe/screens/settings.dart';
+import 'package:smartibe/screens/step.dart';
+import 'package:smartibe/screens/userprofile.dart';
 import 'package:smartibe/src/ble/ble_device_connector.dart';
 import 'package:smartibe/src/ble/ble_device_interactor.dart';
 import 'package:smartibe/src/ble/ble_scanner.dart';
 import 'package:smartibe/src/ble/ble_status_monitor.dart';
 import 'package:provider/provider.dart';
+import 'package:smartibe/src/ui/device_list.dart';
 import 'src/ble/ble_logger.dart';
 
 const _themeColor = Colors.lightGreen;
@@ -66,7 +74,7 @@ void main() {
         title: titlename,
         color: _themeColor,
         theme: ThemeData(primarySwatch: _themeColor),
-        home: HomeScreen(), // const AllSensor()
+        home: const HomeScreen(),
       ),
     ),
   );
